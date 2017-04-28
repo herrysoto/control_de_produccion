@@ -46,7 +46,7 @@ public class ListarOperacionServicioSP extends StoredProcedure {
 	            BeanOperacionServicio ops = new BeanOperacionServicio();
 	            ops.setVchcodigooperacion(rs.getString("VCHCODIGOOPERACION"));
 	            ops.setNumpreciosugerido(rs.getInt("NUMPRECIOSUGERIDO"));
-	            System.out.println(ops.toString());
+//	            System.out.println(ops.toString());
 	            lista.add(ops);
 	            return lista;       
 	           
