@@ -26,22 +26,33 @@ public class ListarOperacionServicioSP extends StoredProcedure {
 	public ListarOperacionServicioSP(DataSource ds) {
 		setDataSource(ds);
 		setSql(sql);
-		//codigo falta aqui
-		declareParameter( new SqlReturnResultSet("rs", new RowMapper() { 
+		/*declareParameter( new SqlReturnResultSet("rs", new RowMapper() { 
 			public Object mapRow(ResultSet rs, int rowNum)throws SQLException {
             BeanOperacionServicio ops = new BeanOperacionServicio();
-            ops.setNumpreciosugerido(rs.getInt("VCHCODIGOOPERACION"));
-            ops.setVchcodigooperacion(rs.getString("NUMPRECIOSUGERIDO"));
+            ops.setVchcodigooperacion(rs.getString("VCHCODIGOOPERACION"));
+            ops.setNumpreciosugerido(rs.getInt("NUMPRECIOSUGERIDO"));
+            System.out.println(ops.toString());
             lista.add(ops);
             return lista;       
            
 
             }
-		}));
+		}));*/
 		
 		
-		declareParameter(new SqlParameter("P_OPS", Types.NUMERIC));
-		declareParameter(new SqlOutParameter("C_OUT", OracleTypes.CURSOR));		
+		declareParameter(new SqlParameter("P_OPS", OracleTypes.VARCHAR));
+		declareParameter(new SqlOutParameter("C_OUT", OracleTypes.CURSOR,new RowMapper() { 
+			public Object mapRow(ResultSet rs, int rowNum)throws SQLException {
+	            BeanOperacionServicio ops = new BeanOperacionServicio();
+	            ops.setVchcodigooperacion(rs.getString("VCHCODIGOOPERACION"));
+	            ops.setNumpreciosugerido(rs.getInt("NUMPRECIOSUGERIDO"));
+	            System.out.println(ops.toString());
+	            lista.add(ops);
+	            return lista;       
+	           
+
+	            }
+			}));		
 		compile();
 	}
 

@@ -4,17 +4,18 @@ import java.util.ArrayList;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.dao.DataAccessException;
+import org.springframework.stereotype.Service;
 
 import com.eacorp.bean.BeanOperacionServicio;
 import com.eacorp.dao.OperacionServicioDAO;
 import com.eacorp.facade.OperacionServicioFacade;
 
+
+@Service
 public class OperacionServicioFacadeImpl implements OperacionServicioFacade{
 
 	@Autowired
-	@Qualifier(value ="osDAO")
 	private OperacionServicioDAO operacionServicioDAO;
 
 	@Override

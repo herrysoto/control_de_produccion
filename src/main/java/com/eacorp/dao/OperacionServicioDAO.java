@@ -9,6 +9,6 @@ import com.eacorp.bean.BeanOperacionServicio;
 
 public interface OperacionServicioDAO {
 
-	
-	public abstract ArrayList<BeanOperacionServicio> listarOperacionSerivicio(Map<String,Object> parametros) throws DataAccessException;
+	public abstract ArrayList<BeanOperacionServicio> listarOperacionSerivicio(
+			Map<String, Object> parametros) throws DataAccessException;
 }

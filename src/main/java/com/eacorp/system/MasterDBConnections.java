@@ -2,10 +2,14 @@ package com.eacorp.system;
 
 import javax.sql.DataSource;
 
-public class MasterDBConnections {
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Lazy;
 
+public class MasterDBConnections {
+	@Lazy
+	@Autowired
 	private DataSource dsPrueba;
-	private DataSource dsProduccion;
+	
 
 	public DataSource getDsPrueba() {
 		return dsPrueba;
@@ -15,13 +19,5 @@ public class MasterDBConnections {
 		this.dsPrueba = dsPrueba;
 	}
 
-	public DataSource getDsProduccion() {
-		return dsProduccion;
-	}
-
-	public void setDsProduccion(DataSource dsProduccion) {
-		this.dsProduccion = dsProduccion;
-	}
-	
-	
+		
 }
