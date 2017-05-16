@@ -24,7 +24,7 @@ import com.eacorp.system.Constantes;
 
 public class Listar_ordenservicio_categorias extends StoredProcedure{
 	ArrayList<BeanControldeProduccion> listcontenidos = new ArrayList<BeanControldeProduccion>();
-	String sql = Constantes.PAQUETE_OPERACIONSERVICIO+Constantes.LIS_OS_CAT;
+	String sql = Constantes.PAQUETE_CONTROLDEPRODUCCION+Constantes.LIS_OS_CAT;
 		
 		
 		public Listar_ordenservicio_categorias(DataSource ds){
@@ -40,7 +40,7 @@ public class Listar_ordenservicio_categorias extends StoredProcedure{
 					op.setCodigo(rs.getString("CODIGO"));
 					op.setLlave(rs.getInt("LLAVE"));
 					op.setFechacreacion(rs.getString("FECHACREACION"));
-					op.setHoracreacion(rs.getString("HORACREACION"));
+					op.setHoracreacion(rs.getString("HORACREACION").substring(0,5)+" "+rs.getString("HORACREACION").substring(9,11));
 					op.setNombre(rs.getString("NOMBRE"));
 					op.setAsesor(rs.getString("ASESOR"));
 					op.setCarro(rs.getString("CARRO"));

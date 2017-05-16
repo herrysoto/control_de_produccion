@@ -2,12 +2,15 @@ package com.eacorp.bean;
 
 import java.util.Date;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
+
 import lombok.Data;
 
 @Data public class BeanControldeProduccion {
 	private String codigo;
 	private int llave;
 	private String fechacreacion;
+	@JsonInclude(JsonInclude.Include.NON_NULL)
 	private String horacreacion;
 	private String nombre;
 	private String placa;
