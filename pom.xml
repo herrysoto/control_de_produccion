@@ -6,7 +6,7 @@
 	<groupId>com.eacorp</groupId>
 	<artifactId>control_de_produccion</artifactId>
 	<version>1.0</version>
-	<packaging>jar</packaging>
+	<packaging>war</packaging>
 
 	<name>control_de_produccion</name>
 	<description>Demo project for Spring Boot</description>

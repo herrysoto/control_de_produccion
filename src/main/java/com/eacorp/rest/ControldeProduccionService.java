@@ -13,7 +13,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.eacorp.bean.BeanCliente;
+import com.eacorp.bean.BeanClienteVehiculo;
 import com.eacorp.bean.BeanControldeProduccion;
+import com.eacorp.bean.BeanTecnico;
 import com.eacorp.facade.ControldeProduccionFacade;
 import com.eacorp.system.Constantes;
 import com.eacorp.utils.Fecha;
@@ -91,6 +94,44 @@ public class ControldeProduccionService {
 		ArrayList<BeanControldeProduccion> listagrillaxllave = controldeProduccionFacade.listarPorLlave(parametros);
 		
 		return listagrillaxllave;
+	}
+	
+	@CrossOrigin(origins = Constantes.FE_URL)
+	@RequestMapping(method = RequestMethod.GET, value = "/datoscliente/{documento}", produces = MediaType.APPLICATION_JSON_VALUE)
+	@ResponseBody
+	public ArrayList<BeanCliente> listarCliente(@PathVariable String documento) throws Exception{
+		System.out.println(documento);
+		Map<String, Object> parametros = new HashMap<String, Object>();
+		parametros.put("p_opcion",  "DOCUMENTO");
+		parametros.put("nombreCompleto",  "NADA") ;
+		parametros.put("documento",  documento) ;
+		ArrayList<BeanCliente> listacliente = controldeProduccionFacade.listarCliente(parametros);
+		
+		return listacliente;
+	}
+	
+	@CrossOrigin(origins = Constantes.FE_URL)
+	@RequestMapping(method = RequestMethod.GET, value = "/datosclientevehiculo/{placa}/{chasis}", produces = MediaType.APPLICATION_JSON_VALUE)
+	@ResponseBody
+	public ArrayList<BeanClienteVehiculo> listarClienteVehiculo(@PathVariable String placa,@PathVariable String chasis) throws Exception{
+		Map<String, Object> parametros = new HashMap<String, Object>();
+		parametros.put("codVehiculo",  placa);
+		parametros.put("vin",  chasis) ;
+		parametros.put("perspectiva",  "TODO") ;
+		ArrayList<BeanClienteVehiculo> listacliente = controldeProduccionFacade.listarClienteVehiculo(parametros);
+		
+		return listacliente;
+	}
+	
+	@CrossOrigin(origins = Constantes.FE_URL)
+	@RequestMapping(method = RequestMethod.GET, value = "/datostecnico/{codSucursal}", produces = MediaType.APPLICATION_JSON_VALUE)
+	@ResponseBody
+	public ArrayList<BeanTecnico> listarTecnico(@PathVariable Integer codSucursal) throws Exception{
+
+		Map<String, Object> parametros = new HashMap<String, Object>();
+		parametros.put("codSucursal", codSucursal);
+		ArrayList<BeanTecnico> listatecnico = controldeProduccionFacade.listarTecnico(parametros);
+		return listatecnico;
 	}
 	
 }

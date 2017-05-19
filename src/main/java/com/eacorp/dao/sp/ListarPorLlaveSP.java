@@ -16,12 +16,14 @@ import org.springframework.jdbc.object.StoredProcedure;
 
 import com.eacorp.bean.BeanControldeProduccion;
 import com.eacorp.system.Constantes;
+import com.eacorp.utils.Fecha;
 
 public class ListarPorLlaveSP extends StoredProcedure{
 	ArrayList<BeanControldeProduccion> listgrilla = new ArrayList<BeanControldeProduccion>();
 	String sql = Constantes.PAQUETE_CONTROLDEPRODUCCION+Constantes.LIS_POR_LLAVE;
 	
 	public ListarPorLlaveSP(DataSource ds){
+		
 		setDataSource(ds);
 		setSql(sql);
 		declareParameter(new SqlParameter("codsucursal", OracleTypes.VARCHAR));
@@ -32,7 +34,9 @@ public class ListarPorLlaveSP extends StoredProcedure{
 				op.setCodigo(rs.getString("CODIGO"));
 				op.setLlave(rs.getInt("LLAVE"));
 				op.setFechacreacion(rs.getString("FECHACREACION"));
-				op.setHoracreacion(rs.getString("HORACREACION"));//.substring(0,5)+" "+rs.getString("HORACREACION").substring(9,11));
+				Fecha fecha = new Fecha();
+				String hora = fecha.getHora(rs.getString("HORACREACION"));
+				op.setHoracreacion(hora);//.substring(0,5)+" "+rs.getString("HORACREACION").substring(9,11)); 
 				op.setNombre(rs.getString("NOMBRE"));
 				op.setAsesor(rs.getString("ASESOR"));
 				op.setCarro(rs.getString("CARRO"));

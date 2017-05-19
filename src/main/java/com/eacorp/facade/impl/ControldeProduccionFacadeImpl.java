@@ -7,7 +7,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
 import org.springframework.stereotype.Service;
 
+import com.eacorp.bean.BeanCliente;
+import com.eacorp.bean.BeanClienteVehiculo;
 import com.eacorp.bean.BeanControldeProduccion;
+import com.eacorp.bean.BeanTecnico;
 import com.eacorp.dao.ControldeProduccionDAO;
 import com.eacorp.facade.ControldeProduccionFacade;
 
@@ -53,5 +56,26 @@ public class ControldeProduccionFacadeImpl implements ControldeProduccionFacade{
 			Map<String, Object> parametros) throws DataAccessException {
 		// TODO Auto-generated method stub
 		return controldeProduccionDAO.listarPorLlave(parametros);
+	}
+
+	@Override
+	public ArrayList<BeanCliente> listarCliente(Map<String, Object> parametros)
+			throws DataAccessException {
+		// TODO Auto-generated method stub
+		return controldeProduccionDAO.listarCliente(parametros);
+	}
+
+	@Override
+	public ArrayList<BeanClienteVehiculo> listarClienteVehiculo(
+			Map<String, Object> parametros) throws DataAccessException {
+		// TODO Auto-generated method stub
+		return controldeProduccionDAO.listarClienteVehiculo(parametros);
+	}
+
+	@Override
+	public ArrayList<BeanTecnico> listarTecnico(Map<String, Object> parametros)
+			throws DataAccessException {
+		// TODO Auto-generated method stub
+		return controldeProduccionDAO.listarTecnico(parametros);
 	}
 }
